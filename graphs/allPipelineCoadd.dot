@@ -1,0 +1,21 @@
+digraph Pipeline {
+task0 [shape="box", style="filled,bold", fillcolor="gray70", label="MakeWarpTask\nindex: 0\nlabel: mwt"];
+calexp [shape="box", style="rounded,filled", fillcolor="gray90", label="calexp\nDimensions: Detector, Instrument, Visit"];
+calexp -> task0;
+skyCorr [shape="box", style="rounded,filled", fillcolor="gray90", label="skyCorr\nDimensions: Detector, Instrument, Visit"];
+skyCorr -> task0;
+deepCoadd_skyMap [shape="box", style="rounded,filled", fillcolor="gray90", label="deepCoadd_skyMap\nDimensions: SkyMap"];
+deepCoadd_skyMap -> task0;
+deepCoadd_directWarp [shape="box", style="rounded,filled", fillcolor="gray90", label="deepCoadd_directWarp\nDimensions: SkyMap, Tract, Patch, Instrument, Visit"];
+task0 -> deepCoadd_directWarp;
+deepCoadd_psfMatchedWarp [shape="box", style="rounded,filled", fillcolor="gray90", label="deepCoadd_psfMatchedWarp\nDimensions: SkyMap, Tract, Patch, Instrument, Visit"];
+task0 -> deepCoadd_psfMatchedWarp;
+task1 [shape="box", style="filled,bold", fillcolor="gray70", label="CompareWarpAssembleCoaddTask\nindex: 1\nlabel: cwact"];
+deepCoadd_directWarp -> task1;
+deepCoadd_skyMap -> task1;
+deepCoadd_psfMatchedWarp -> task1;
+deepCoadd [shape="box", style="rounded,filled", fillcolor="gray90", label="deepCoadd\nDimensions: Patch, SkyMap, AbstractFilter, Tract"];
+task1 -> deepCoadd;
+deepCoadd_nImage [shape="box", style="rounded,filled", fillcolor="gray90", label="deepCoadd_nImage\nDimensions: Patch, SkyMap, AbstractFilter, Tract"];
+task1 -> deepCoadd_nImage;
+}
