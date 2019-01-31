@@ -1,4 +1,4 @@
-pipetask -b $CI_HSC_DIR/DATA/butler.yaml -p lsst.ip.isr -p lsst.pipe.tasks -i 'raw','calib','shared/ci_hsc' -o test/all qgraph --pipeline-dot ./allPipeline.dot  --qgraph-dot allGraph.dot \
+python -m cProfile -o allGraph.profile $CTRL_MPEXEC_DIR/bin/pipetask -b $CI_HSC_DIR/DATA/butler.yaml -p lsst.ip.isr -p lsst.pipe.tasks -i 'raw','calib','shared/ci_hsc' qgraph --pipeline-dot ./allPipeline.dot  --qgraph-dot allGraph.dot \
 -t isrTask.IsrTask:isr -C isr:$DEMO_HSC_PIPELINETASK_DIR/config/isr.py \
 -t characterizeImage.CharacterizeImageTask:cit -C cit:$DEMO_HSC_PIPELINETASK_DIR/config/charImage.py \
 -t calibrate.CalibrateTask:ct -C ct:$DEMO_HSC_PIPELINETASK_DIR/config/calibrate.py \
