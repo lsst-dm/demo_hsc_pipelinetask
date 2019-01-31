@@ -6,6 +6,7 @@ pipetask -L Debug -j 15 -b $CI_HSC_DIR/DATA/butler.yaml -p lsst.ip.isr -p lsst.p
 -t calibrate.CalibrateTask:ct -C ct:$DEMO_HSC_PIPELINETASK_DIR/config/calibrate.py \
 
 python $DEMO_HSC_PIPELINETASK_DIR/bin/ingestSkyMap.py $CI_HSC_DIR/DATA $COLLECTION
+python $DEMO_HSC_PIPELINETASK_DIR/bin/ingestBrightObjectMask.py $CI_HSC_DIR/DATA $COLLECTION
 
 pipetask -d "Patch.patch = 69" -j 15 -b $CI_HSC_DIR/DATA/butler.yaml -p lsst.ip.isr -p lsst.pipe.tasks -i $COLLECTION -o $(echo $COLLECTION)Coadd run \
 -t makeCoaddTempExp.MakeWarpTask:mwt -C mwt:$DEMO_HSC_PIPELINETASK_DIR/config/makeWarp.py \
