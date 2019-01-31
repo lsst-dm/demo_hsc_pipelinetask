@@ -12,7 +12,6 @@ pipetask -d "Patch.patch = 69" -j 15 -b $CI_HSC_DIR/DATA/butler.yaml -p lsst.ip.
 -t assembleCoadd.CompareWarpAssembleCoaddTask:cwact -C cwact:$DEMO_HSC_PIPELINETASK_DIR/config/compareWarpAssembleCoadd.py \
 
 pipetask -d "Patch.patch = 69" -j 8 -b $CI_HSC_DIR/DATA/butler.yaml -p lsst.ip.isr -p lsst.pipe.tasks -i $COLLECTION,$(echo $COLLECTION)Coadd -o $(echo $COLLECTION)CoaddMeas run \
--t assembleCoadd.CompareWarpAssembleCoaddTask:cwact -C cwact:$DEMO_HSC_PIPELINETASK_DIR/config/compareWarpAssembleCoadd.py \
 -t multiBand.DetectCoaddSourcesTask \
 -t mergeDetections.MergeDetectionsTask:mdt -C mdt:$DEMO_HSC_PIPELINETASK_DIR/config/mergeDetections.py \
 -t deblendCoaddSourcesPipeline.DeblendCoaddSourcesSingleTask \
