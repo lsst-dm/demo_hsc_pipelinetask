@@ -9,3 +9,4 @@ config.assembleStaticSkyModel.subregionSize = (10000, 200)
 config.doAttachTransmissionCurve = True
 from lsst.pipe.tasks.selectImages import PsfWcsSelectImagesTask
 config.select.retarget(PsfWcsSelectImagesTask)
+config.doMaskBrightObjects=True

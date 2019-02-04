@@ -7,6 +7,7 @@ config.doNImage = True
 config.badMaskPlanes += ["SUSPECT"]
 config.doMaskBrightObjects = False  # Different from obs_subaru
 config.doAttachTransmissionCurve = True
+config.doMaskBrightObjects=True
 
 from lsst.pipe.tasks.selectImages import PsfWcsSelectImagesTask
 config.select.retarget(PsfWcsSelectImagesTask)
